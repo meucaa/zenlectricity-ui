@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './Form.css';
 
 interface LoginState {
@@ -26,7 +27,14 @@ class LoginForm extends React.Component<any, LoginState> {
   }
 
   handleSubmit(event: any) {
-    alert('You try to connect with: ' + JSON.stringify(this.state));
+    axios.post('http://localhost:9000/api/login', {
+      login: this.state.username,
+      password: this.state.password
+    }).then(response => {
+      alert("You got a token!");
+    }, error => {
+      alert("You got no token: " + error)
+    })
     event.preventDefault();
   }
 
