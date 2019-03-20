@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import './Form.css';
+import { css } from './FormStyle';
 
 class SignupForm extends Component {
   render() {
     return (
-      <div className="login-page">
-        <div className="form">
-          <form className="register-form">
-            <input type="text" placeholder="name"/>
-            <input type="password" placeholder="password"/>
-            <input type="text" placeholder="email address"/>
-            <button>create</button>
-            <p className="message">Already registered? <a href="#">Sign In</a></p>
+      <div className={css.formPage}>
+        <div className={css.form}>
+          <form>
+            <input className={css.formInput} type="text" placeholder="name"/>
+            <input className={css.formInput} type="password" placeholder="password"/>
+            <input className={css.formInput} type="text" placeholder="email address"/>
+            <button className={css.formButton}>create</button>
+            <p className={css.formMessage}>Already registered? <a className={css.formMessageLink} href="#">Sign In</a></p>
           </form>
         </div>
       </div>

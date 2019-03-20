@@ -12,6 +12,7 @@
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
     "typescript": "3.3.3333",
+    "typestyle": "^2.0.1",
     "universal-cookie": "^3.0.7"
   },
   "scripts": {

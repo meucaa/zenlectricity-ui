@@ -1,6 +1,6 @@
 import React, { ChangeEvent, MouseEvent } from 'react';
 import axios from 'axios';
-import './Form.css';
+import { css } from './FormStyle';
 
 interface LoginState {
   username: string;
@@ -32,13 +32,13 @@ export const LoginForm = () => {
   }
 
   return (
-    <div className="login-page">
-      <div className="form">
-        <form className="login-form">
-          <input type="text" onChange={handleLoginChange} placeholder="username"/>
-          <input type="password" onChange={handlePasswordChange} placeholder="password"/>
-          <button onClick={handleSubmit}>login</button>
-          <p className="message">Not registered? <a href="#">Create an account</a></p>
+    <div className={css.formPage}>
+      <div className={css.form}>
+        <form>
+          <input className={css.formInput} type="text" onChange={handleLoginChange} placeholder="username"/>
+          <input className={css.formInput} type="password" onChange={handlePasswordChange} placeholder="password"/>
+          <button className={css.formButton} onClick={handleSubmit}>login</button>
+          <p className={css.formMessage}>Not registered? <a className={css.formMessageLink} href="#">Create an account</a></p>
         </form>
       </div>
     </div>
