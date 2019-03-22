@@ -1,5 +1,6 @@
 import React, { ChangeEvent, MouseEvent } from 'react';
 import { css } from './FormStyle';
+import { Auth } from './Auth';
 
 interface LoginState {
   username: string;
@@ -28,11 +29,14 @@ export const LoginForm = () => {
       })
     }).then(response => {
       if(response.status == 200) return response.json()
-      else return {status: response.status}
+      else throw {status: response.status}
     })
-    .then(jsonData => alert(`You got a response from the API: ${jsonData.token || jsonData.status}`))
+    .then(jsonData => {
+        Auth.authenticate(jsonData.token)
+        window.location.href = '/list'
+    })
     .catch(error => {
-      alert(`No response from API: ${error}`)
+      alert(`No response from API: ${JSON.stringify(error)}`)
     })
     event.preventDefault();
   }
@@ -44,7 +48,7 @@ export const LoginForm = () => {
           <input className={css.formInput} type="text" onChange={handleLoginChange} placeholder="username"/>
           <input className={css.formInput} type="password" onChange={handlePasswordChange} placeholder="password"/>
           <button className={css.formButton} onClick={handleSubmit}>login</button>
-          <p className={css.formMessage}>Not registered? <a className={css.formMessageLink} href="#">Create an account</a></p>
+          <p className={css.formMessage}>Not registered? <a className={css.formMessageLink} href="/signup">Create an account</a></p>
         </form>
       </div>
     </div>
